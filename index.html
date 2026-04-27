@@ -46,12 +46,12 @@
             <div class="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-black/20 rounded-full blur-3xl"></div>
 
             <div class="glass-effect rounded-[2.5rem] card-shadow p-10 w-full max-w-md fade-in relative z-10 border border-white/20">
-                <div class="text-center mb-10">
+                <div class="text-center mb-10 text-slate-800">
                     <div class="w-28 h-28 mx-auto mb-6 flex items-center justify-center p-2 bg-white rounded-3xl shadow-sm border border-slate-50">
                         <img src="https://i.postimg.cc/MTL8s1F2/dcs.png" class="w-full h-full object-contain" alt="DCS Logo" onerror="this.parentElement.innerHTML='💰'">
                     </div>
-                    <h1 id="main-title" class="text-3xl font-extrabold text-slate-800 uppercase tracking-tight leading-none text-slate-800">DCS Fund</h1>
-                    <p id="dept-subtitle" class="text-slate-400 mt-2 text-sm font-medium text-slate-500">Department of Computer Science, KICT</p>
+                    <h1 id="main-title" class="text-3xl font-extrabold text-slate-800 uppercase tracking-tight leading-none">DCS Fund</h1>
+                    <p id="dept-subtitle" class="text-slate-400 mt-2 text-sm font-medium">Department of Computer Science, KICT</p>
                     
                     <div id="db-status" class="mt-6 inline-flex items-center px-4 py-1.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-400 border border-slate-200 uppercase tracking-tighter">
                         <span class="w-2 h-2 rounded-full bg-slate-300 mr-2 animate-pulse"></span>
@@ -67,7 +67,7 @@
 
                     <div id="member-login-form" class="space-y-5 fade-in">
                         <div>
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5 ml-1 tracking-wider text-slate-400">Staff ID Number</label>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5 ml-1 tracking-wider">Staff ID Number</label>
                             <input type="text" id="staff-id" placeholder="Enter your ID" class="w-full px-5 py-4 border-2 border-slate-100 rounded-2xl focus:border-[#00918e] focus:ring-4 focus:ring-[#00918e]/10 focus:outline-none transition-all text-slate-700 font-bold">
                         </div>
                         <button onclick="memberLogin()" class="w-full py-5 bg-[#00918e] text-white rounded-2xl font-black text-sm tracking-widest hover:bg-[#007573] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-[#00918e]/20 uppercase">Sign In</button>
@@ -75,7 +75,7 @@
 
                     <div id="admin-login-form" class="space-y-5 hidden fade-in">
                         <div>
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5 ml-1 tracking-wider text-slate-400">Admin Access Code</label>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5 ml-1 tracking-wider">Admin Access Code</label>
                             <input type="password" id="admin-password" placeholder="••••" class="w-full px-5 py-4 border-2 border-slate-100 rounded-2xl focus:border-slate-800 focus:ring-4 focus:ring-slate-800/10 focus:outline-none transition-all text-slate-700 font-bold">
                         </div>
                         <button onclick="adminLogin()" class="w-full py-5 bg-slate-800 text-white rounded-2xl font-black text-sm tracking-widest hover:bg-slate-900 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-slate-300 uppercase">Admin Access</button>
@@ -103,15 +103,29 @@
             </header>
 
             <main class="max-w-6xl mx-auto p-4 md:p-6 space-y-6">
+                <!-- Latest Receipt Section -->
+                <div id="latest-receipt-banner" class="hidden bg-[#00918e] rounded-2xl p-6 border border-[#007573] shadow-lg fade-in text-white">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-2xl">📄</div>
+                            <div>
+                                <h3 class="font-black text-sm uppercase tracking-widest">Latest Official Receipt</h3>
+                                <p class="text-xs text-emerald-100 opacity-80">Your most recent payment has been approved.</p>
+                            </div>
+                        </div>
+                        <button id="latest-receipt-btn" class="px-6 py-2 bg-white text-[#00918e] rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-emerald-50 transition-all shadow-lg">View Receipt</button>
+                    </div>
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="bg-white rounded-2xl card-shadow p-6 border-l-4 border-[#00918e]"><p class="text-slate-400 text-xs font-bold uppercase mb-1 text-slate-400">Total Contributed</p><p class="text-3xl font-extrabold text-slate-800">RM <span id="mem-total-approved">0.00</span></p></div>
-                    <div class="bg-white rounded-2xl card-shadow p-6 border-l-4 border-amber-500"><p class="text-slate-400 text-xs font-bold uppercase mb-1 text-slate-400">Pending Approval</p><p class="text-3xl font-extrabold text-slate-800">RM <span id="mem-total-pending">0.00</span></p></div>
-                    <div class="bg-white rounded-2xl card-shadow p-6 border-l-4 border-blue-500"><p class="text-slate-400 text-xs font-bold uppercase mb-1 text-slate-400">Year Progress (<span id="mem-display-year">2026</span>)</p><p class="text-3xl font-extrabold text-slate-800">RM <span id="mem-year-paid">0.00</span> / 120</p></div>
+                    <div class="bg-white rounded-2xl card-shadow p-6 border-l-4 border-[#00918e]"><p class="text-slate-400 text-xs font-bold uppercase mb-1">Total Contributed</p><p class="text-3xl font-extrabold text-slate-800">RM <span id="mem-total-approved">0.00</span></p></div>
+                    <div class="bg-white rounded-2xl card-shadow p-6 border-l-4 border-amber-500"><p class="text-slate-400 text-xs font-bold uppercase mb-1">Pending Approval</p><p class="text-3xl font-extrabold text-slate-800">RM <span id="mem-total-pending">0.00</span></p></div>
+                    <div class="bg-white rounded-2xl card-shadow p-6 border-l-4 border-blue-500"><p class="text-slate-400 text-xs font-bold uppercase mb-1">Year Progress (<span id="mem-display-year">2026</span>)</p><p class="text-3xl font-extrabold text-slate-800">RM <span id="mem-year-paid">0.00</span> / 120</p></div>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-1 space-y-6">
-                        <div class="bg-white rounded-2xl card-shadow p-6 border border-slate-100">
+                        <div class="bg-white rounded-2xl card-shadow p-6 border border-slate-100 text-slate-800">
                             <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">💳 Submit Payment</h2>
                             <div class="space-y-4">
                                 <div class="flex p-1 bg-slate-100 rounded-lg">
@@ -144,7 +158,7 @@
                             <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 text-slate-800">📋 Contribution History</h2>
                             <div class="overflow-x-auto">
                                 <table class="w-full text-left">
-                                    <thead><tr class="text-slate-400 text-[10px] font-bold uppercase border-b border-slate-100"><th class="pb-3 px-2">Date</th><th class="pb-3 px-2">Details</th><th class="pb-3 px-2">Amount</th><th class="pb-3 px-2 text-right">Status</th></tr></thead>
+                                    <thead><tr class="text-slate-400 text-[10px] font-bold uppercase border-b border-slate-100"><th class="pb-3 px-2">Date</th><th class="pb-3 px-2">Details</th><th class="pb-3 px-2">Amount</th><th class="pb-3 px-2 text-right">Status / Receipt</th></tr></thead>
                                     <tbody id="mem-history-body" class="divide-y divide-slate-50"></tbody>
                                 </table>
                             </div>
@@ -157,26 +171,26 @@
         <!-- Admin Dashboard -->
         <div id="admin-dashboard" class="hidden min-h-full">
             <header class="bg-slate-900 text-white p-4 sticky top-0 z-10 shadow-lg">
-                <div class="max-w-7xl mx-auto flex items-center justify-between">
+                <div class="max-w-7xl mx-auto flex items-center justify-between text-white">
                     <div class="flex items-center gap-3">
                         <div class="w-12 h-12 flex items-center justify-center p-1 bg-white/10 rounded-lg">
                             <img src="https://i.postimg.cc/MTL8s1F2/dcs.png" class="w-full h-full object-contain" alt="Logo">
                         </div>
-                        <div><h1 class="text-lg font-bold leading-tight uppercase tracking-tighter text-white">Admin Terminal</h1><p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest opacity-60">System Controller</p></div>
+                        <div><h1 class="text-lg font-bold leading-tight uppercase tracking-tighter">Admin Terminal</h1><p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest opacity-60">System Controller</p></div>
                     </div>
-                    <button onclick="logout()" class="px-4 py-2 bg-white/10 rounded-lg hover:bg-white/20 transition-all text-xs font-bold border border-white/20 uppercase tracking-tighter text-white">Logout</button>
+                    <button onclick="logout()" class="px-4 py-2 bg-white/10 rounded-lg hover:bg-white/20 transition-all text-xs font-bold border border-white/20 uppercase tracking-tighter">Logout</button>
                 </div>
             </header>
 
-            <main class="max-w-7xl mx-auto p-4 md:p-6 space-y-6">
+            <main class="max-w-7xl mx-auto p-4 md:p-6 space-y-6 text-slate-800">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-white">
                     <div class="bg-slate-800 rounded-2xl p-5 border border-white/5 shadow-xl"><p class="text-slate-400 text-[10px] font-bold uppercase mb-1">Net Balance</p><p class="text-2xl font-black text-emerald-400">RM <span id="adm-stat-total">0.00</span></p></div>
-                    <div class="bg-emerald-600 rounded-2xl p-5 shadow-xl border border-emerald-500/20"><p class="text-emerald-200 text-[10px] font-bold uppercase mb-1 text-emerald-200">Approved Income</p><p class="text-2xl font-black">RM <span id="adm-stat-approved">0.00</span></p></div>
-                    <div class="bg-amber-500 rounded-2xl p-5 shadow-xl border border-amber-400/20"><p class="text-amber-100 text-[10px] font-bold uppercase mb-1 text-amber-100">Pending Approval</p><p class="text-2xl font-black">RM <span id="adm-stat-pending">0.00</span></p></div>
-                    <div class="bg-rose-500 rounded-2xl p-5 shadow-xl border border-rose-400/20"><p class="text-rose-100 text-[10px] font-bold uppercase mb-1 text-rose-100">Total Expenses</p><p class="text-2xl font-black">RM <span id="adm-stat-expenses">0.00</span></p></div>
+                    <div class="bg-emerald-600 rounded-2xl p-5 shadow-xl border border-emerald-500/20"><p class="text-emerald-200 text-[10px] font-bold uppercase mb-1">Approved Income</p><p class="text-2xl font-black">RM <span id="adm-stat-approved">0.00</span></p></div>
+                    <div class="bg-amber-500 rounded-2xl p-5 shadow-xl border border-amber-400/20"><p class="text-amber-100 text-[10px] font-bold uppercase mb-1">Pending Approval</p><p class="text-2xl font-black">RM <span id="adm-stat-pending">0.00</span></p></div>
+                    <div class="bg-rose-500 rounded-2xl p-5 shadow-xl border border-rose-400/20"><p class="text-rose-100 text-[10px] font-bold uppercase mb-1">Total Expenses</p><p class="text-2xl font-black">RM <span id="adm-stat-expenses">0.00</span></p></div>
                 </div>
 
-                <div class="bg-white rounded-2xl card-shadow overflow-hidden border border-slate-100 text-slate-800">
+                <div class="bg-white rounded-2xl card-shadow overflow-hidden border border-slate-100">
                     <div class="flex border-b border-slate-100 bg-slate-50/50">
                         <button onclick="switchAdminTab('approvals')" id="btn-tab-approvals" class="flex-1 py-4 text-[10px] font-black uppercase border-b-2 border-[#00918e] text-[#00918e] bg-white">Approvals</button>
                         <button onclick="switchAdminTab('finances')" id="btn-tab-finances" class="flex-1 py-4 text-[10px] font-black uppercase border-b-2 border-transparent text-slate-400">Financial Logs</button>
@@ -191,28 +205,6 @@
 
                     <div id="tab-finances" class="p-6 hidden">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
-                            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
-                                <h3 class="text-[10px] font-black text-blue-600 uppercase mb-4 flex items-center gap-2">👤 1. Staff Contribution Report</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-end text-slate-800">
-                                    <div class="md:col-span-2"><label class="block text-[9px] font-black text-slate-400 uppercase mb-1">Select Staff Member</label><select id="rpt-staff-select" class="w-full px-3 py-2 border rounded-xl text-xs font-bold outline-none border-slate-200 text-slate-800 bg-white"></select></div>
-                                    <div><label class="block text-[9px] font-black text-slate-400 uppercase mb-1">Date From</label><input type="date" id="rpt-staff-date-from" class="w-full px-3 py-2 border rounded-xl text-xs font-bold border-slate-200 text-slate-800 bg-white"></div>
-                                    <div><label class="block text-[9px] font-black text-slate-400 uppercase mb-1">Date To</label><input type="date" id="rpt-staff-date-to" class="w-full px-3 py-2 border rounded-xl text-xs font-bold border-slate-200 text-slate-800 bg-white"></div>
-                                    <button onclick="openReportPreview('staff')" class="md:col-span-2 w-full py-3 bg-blue-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-700 transition-all shadow-lg shadow-blue-200">Generate Staff Statement</button>
-                                </div>
-                            </div>
-                            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
-                                <h3 class="text-[10px] font-black text-[#00918e] uppercase mb-4 flex items-center gap-2">🗓️ 2. Annual Financial Overview</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-end text-slate-800">
-                                    <div class="md:col-span-2"><label class="block text-[9px] font-black text-slate-400 uppercase mb-1">Select Reporting Year</label><select id="rpt-year-select" class="w-full px-3 py-2 border rounded-xl text-xs font-bold outline-none border-slate-200 text-slate-800 bg-white"></select></div>
-                                    <div><label class="block text-[9px] font-black text-slate-400 uppercase mb-1">Date From</label><input type="date" id="rpt-annual-date-from" class="w-full px-3 py-2 border rounded-xl text-xs font-bold border-slate-200 text-slate-800 bg-white"></div>
-                                    <div><label class="block text-[9px] font-black text-slate-400 uppercase mb-1">Date To</label><input type="date" id="rpt-annual-date-to" class="w-full px-3 py-2 border rounded-xl text-xs font-bold border-slate-200 text-slate-800 bg-white"></div>
-                                    <button onclick="openReportPreview('annual')" class="md:col-span-2 w-full py-3 bg-[#00918e] text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#007573] shadow-lg shadow-[#00918e]/20">Generate Annual Report</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Manual Logs Section -->
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10 text-slate-800">
                             <div class="p-6 bg-rose-50 rounded-2xl border border-rose-100 shadow-sm">
                                 <h3 class="text-[10px] font-black text-rose-700 mb-4 uppercase">💸 Log Expense</h3>
                                 <div class="space-y-4">
@@ -221,14 +213,10 @@
                                         <input type="number" id="exp-amount" placeholder="Amount RM" class="w-full px-4 py-2 border border-rose-200 rounded-lg text-sm font-bold bg-white text-slate-800">
                                         <input type="date" id="exp-date" class="w-full px-4 py-2 border border-rose-200 rounded-lg text-[10px] font-bold text-slate-600 bg-white text-slate-800">
                                     </div>
-                                    <div class="bg-white/60 rounded-lg p-2 border border-rose-200">
-                                        <label class="block text-[8px] font-black text-rose-300 uppercase mb-1">Attach Proof</label>
-                                        <input type="file" id="exp-receipt" accept="image/*,.pdf" class="w-full text-[10px] text-slate-400">
-                                    </div>
-                                    <button onclick="addExpense()" id="exp-btn" class="w-full py-3 bg-rose-600 text-white rounded-xl text-[10px] font-black uppercase shadow-lg shadow-rose-100">Save Expense</button>
+                                    <button onclick="addExpense()" id="exp-btn" class="w-full py-3 bg-rose-600 text-white rounded-xl text-[10px] font-black uppercase shadow-lg">Save Expense</button>
                                 </div>
                             </div>
-                            <div class="p-6 bg-blue-50 rounded-2xl border border-blue-100 shadow-sm text-slate-800">
+                            <div class="p-6 bg-blue-50 rounded-2xl border border-blue-100 shadow-sm">
                                 <h3 class="text-[10px] font-black text-blue-700 mb-4 uppercase text-blue-700">🎁 Log Extra Income</h3>
                                 <div class="space-y-4">
                                     <input type="text" id="inc-title" placeholder="Source" class="w-full px-4 py-2 border border-blue-200 rounded-lg text-sm bg-white font-bold text-slate-800">
@@ -236,23 +224,11 @@
                                         <input type="number" id="inc-amount" placeholder="Amount RM" class="w-full px-4 py-2 border border-blue-200 rounded-lg text-sm font-bold bg-white text-slate-800">
                                         <input type="date" id="inc-date" class="w-full px-4 py-2 border border-blue-200 rounded-lg text-[10px] font-bold text-slate-600 bg-white text-slate-800">
                                     </div>
-                                    <div class="bg-white/60 rounded-lg p-2 border border-blue-200">
-                                        <label class="block text-[8px] font-black text-blue-300 uppercase mb-1">Attach Proof</label>
-                                        <input type="file" id="inc-receipt" accept="image/*,.pdf" class="w-full text-[10px] text-slate-400">
-                                    </div>
-                                    <button onclick="addIncome()" id="inc-btn" class="w-full py-3 bg-blue-600 text-white rounded-xl text-[10px] font-black uppercase shadow-lg shadow-blue-100">Save Income</button>
+                                    <button onclick="addIncome()" id="inc-btn" class="w-full py-3 bg-blue-600 text-white rounded-xl text-[10px] font-black uppercase shadow-lg">Save Income</button>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left">
-                                <thead class="text-[10px] font-black text-slate-400 uppercase border-b border-slate-100">
-                                    <tr><th class="pb-3 px-2 text-slate-400">Type</th><th class="pb-3 px-2 text-slate-400">Details</th><th class="pb-3 px-2 text-slate-400">Amount</th><th class="pb-3 px-2 text-center text-slate-400">Evidence</th><th class="pb-3 px-2 text-right text-slate-400">Date</th><th class="pb-3 px-2"></th></tr>
-                                </thead>
-                                <tbody id="adm-finance-body" class="divide-y divide-slate-50 text-[11px] font-medium text-slate-600"></tbody>
-                            </table>
-                        </div>
+                        <div class="overflow-x-auto"><table class="w-full text-left"><thead class="text-[10px] font-black text-slate-400 uppercase border-b border-slate-100"><tr><th class="pb-3 px-2 text-slate-400">Type</th><th class="pb-3 px-2 text-slate-400">Details</th><th class="pb-3 px-2 text-slate-400">Amount</th><th class="pb-3 px-2 text-center text-slate-400">Evidence</th><th class="pb-3 px-2 text-right text-slate-400">Date</th><th class="pb-3 px-2 text-right text-slate-400">Manage</th></tr></thead><tbody id="adm-finance-body" class="divide-y divide-slate-50 text-[11px] font-medium text-slate-600"></tbody></table></div>
                     </div>
 
                     <div id="tab-members" class="p-6 hidden">
@@ -261,19 +237,12 @@
                             <input type="text" id="new-mem-name" placeholder="Full Staff Name" class="flex-1 px-4 py-2 border-2 border-slate-100 rounded-xl text-sm min-w-[200px] focus:border-[#00918e] outline-none font-bold text-slate-800 bg-white">
                             <button onclick="registerMember()" class="px-8 py-2 bg-[#00918e] text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-[#007573]">Add Member</button>
                         </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left">
-                                <thead class="text-[10px] font-black text-slate-400 uppercase border-b border-slate-100">
-                                    <tr><th class="pb-3 px-2 text-slate-400">Staff ID</th><th class="pb-3 px-2 text-slate-400">Name</th><th class="pb-3 px-2 text-center text-slate-400">Total Paid (RM)</th><th class="pb-3 px-2 text-right text-slate-400">Actions</th></tr>
-                                </thead>
-                                <tbody id="adm-member-body" class="divide-y divide-slate-50 text-[11px] font-bold text-slate-700"></tbody>
-                            </table>
-                        </div>
+                        <div class="overflow-x-auto"><table class="w-full text-left"><thead class="text-[10px] font-black text-slate-400 uppercase border-b border-slate-100"><tr><th class="pb-3 px-2 text-slate-400">Staff ID</th><th class="pb-3 px-2 text-slate-400">Name</th><th class="pb-3 px-2 text-center text-slate-400">Total Paid (RM)</th><th class="pb-3 px-2 text-right text-slate-400">Actions</th></tr></thead><tbody id="adm-member-body" class="divide-y divide-slate-50 text-[11px] font-bold text-slate-700"></tbody></table></div>
                     </div>
 
-                    <div id="tab-settings" class="p-6 hidden">
-                        <div class="max-w-md bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-inner text-slate-800">
-                            <h3 class="text-[10px] font-black text-slate-800 mb-6 uppercase tracking-[0.2em] text-slate-800">Manage Fund Years</h3>
+                    <div id="tab-settings" class="p-6 hidden text-slate-800">
+                        <div class="max-w-md bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-inner">
+                            <h3 class="text-[10px] font-black text-slate-800 mb-6 uppercase tracking-[0.2em]">Manage Fund Years</h3>
                             <div class="flex gap-3 mb-8">
                                 <input type="number" id="new-year" placeholder="e.g. 2027" class="flex-1 px-4 py-2 border-2 border-slate-100 rounded-xl text-sm font-black focus:border-[#00918e] outline-none text-slate-800 bg-white">
                                 <button onclick="addYear()" class="px-8 py-2 bg-slate-800 text-white rounded-xl text-xs font-black uppercase tracking-widest text-white">Add Year</button>
@@ -290,21 +259,21 @@
             <div id="preview-modal" class="bg-white rounded-[2rem] w-full max-w-2xl h-[90vh] overflow-hidden shadow-2xl hidden flex flex-col fade-in text-slate-800">
                 <div class="p-8 border-b border-slate-50 flex items-center justify-between"><h3 id="modal-title" class="font-black text-slate-800 uppercase tracking-widest text-slate-800">Evidence Viewer</h3><button onclick="closeModal()" class="text-slate-300 hover:text-slate-800 font-bold text-xl">✕</button></div>
                 <div class="flex-1 p-8 overflow-y-auto space-y-6">
-                    <div id="pv-details" class="grid grid-cols-2 gap-6 p-6 bg-slate-50 rounded-2xl text-xs font-bold text-slate-800"></div>
+                    <div id="pv-details" class="grid grid-cols-2 gap-6 p-6 bg-slate-50 rounded-2xl text-xs font-bold text-slate-800 text-slate-800"></div>
                     <div class="bg-white rounded-3xl border-4 border-slate-100 overflow-hidden shadow-inner flex flex-col items-center justify-center relative min-h-[300px]">
                         <img id="pv-image" src="" class="w-full h-auto object-contain hidden" alt="Receipt Image">
                         <iframe id="pv-pdf" class="w-full h-[1200px] hidden rounded-2xl" src=""></iframe>
                         <div id="pv-no-image" class="aspect-video flex items-center justify-center text-slate-400 font-bold uppercase tracking-widest text-[10px] bg-slate-50 text-slate-400">No Attachment Available</div>
                     </div>
                 </div>
-                <div id="modal-footer" class="p-8 bg-slate-50 border-t border-slate-100 flex gap-4">
-                    <button onclick="updateStatus('rejected')" class="flex-1 py-4 bg-white border-2 border-rose-100 text-rose-500 rounded-2xl font-black text-xs uppercase hover:bg-rose-50 transition-all text-rose-500">Reject</button>
-                    <button onclick="updateStatus('approved')" class="flex-1 py-4 bg-[#00918e] text-white rounded-2xl font-black text-xs uppercase hover:bg-[#007573] shadow-xl shadow-[#00918e]/20 transition-all text-white">Approve</button>
+                <div id="modal-footer" class="p-8 bg-slate-50 border-t border-slate-100 flex gap-4 text-white">
+                    <button onclick="updateStatus('rejected')" class="flex-1 py-4 bg-white border-2 border-rose-100 text-rose-500 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-rose-50 transition-all text-rose-500">Reject</button>
+                    <button onclick="updateStatus('approved')" class="flex-1 py-4 bg-[#00918e] text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#007573] shadow-xl shadow-[#00918e]/20 transition-all text-white">Approve</button>
                 </div>
             </div>
 
             <div id="report-preview-modal" class="bg-white rounded-[2rem] w-full max-w-5xl h-[92vh] overflow-hidden shadow-2xl hidden flex flex-col fade-in">
-                <div class="p-8 border-b border-slate-50 flex items-center justify-between bg-slate-50/50"><div><h3 class="font-black text-slate-800 uppercase tracking-widest text-slate-800">Financial Document Preview</h3><p class="text-[10px] text-[#00918e] font-black uppercase tracking-[0.2em] mt-1 text-[#00918e]">Official Fund Statement</p></div><button onclick="closeModal()" class="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm text-slate-400 font-bold text-xl hover:text-slate-800 transition-all">✕</button></div>
+                <div class="p-8 border-b border-slate-50 flex items-center justify-between bg-slate-50/50 text-slate-800"><div><h3 class="font-black text-slate-800 uppercase tracking-widest text-slate-800">Financial Document Preview</h3><p class="text-[10px] text-[#00918e] font-black uppercase tracking-[0.2em] mt-1 text-[#00918e]">Official Fund Statement</p></div><button onclick="closeModal()" class="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm text-slate-400 font-bold text-xl hover:text-slate-800 transition-all">✕</button></div>
                 <div id="report-container" class="flex-1 bg-slate-200 p-6 overflow-hidden relative">
                     <div id="pdf-blocked-msg" class="hidden absolute inset-0 flex items-center justify-center z-10 p-12 bg-white/95 text-slate-800"><div class="text-center max-w-xs"><p class="text-slate-800 font-black uppercase tracking-widest mb-4 text-slate-800">Preview Restricted</p><p class="text-[11px] text-slate-500 leading-relaxed font-bold">Please download to view.</p></div></div><iframe id="report-iframe" class="w-full h-full rounded-[1.5rem] bg-white border-none shadow-2xl" src=""></iframe>
                 </div>
@@ -313,7 +282,7 @@
                     <button id="download-report-btn" class="px-10 py-4 bg-[#00918e] text-white rounded-2xl font-black text-xs uppercase shadow-2xl shadow-[#00918e]/20 hover:scale-[1.02] active:scale-[0.98] transition-all text-white">📥 Download PDF</button>
                 </div>
             </div>
-
+            
             <div id="legacy-modal" class="bg-white rounded-3xl w-full max-w-sm overflow-hidden shadow-2xl hidden fade-in text-slate-800">
                 <div class="p-6 border-b flex items-center justify-between"><h3 class="font-black text-slate-800 uppercase text-xs tracking-widest text-slate-800">Legacy Record</h3><button onclick="closeModal()" class="text-slate-400 font-bold">✕</button></div>
                 <div class="p-8 space-y-5">
@@ -323,7 +292,7 @@
                         <input type="number" id="legacy-amount" placeholder="Amount RM" value="120" class="w-full px-4 py-3 border-2 border-slate-100 rounded-2xl text-xs font-black focus:border-[#00918e] outline-none bg-white text-slate-800">
                         <input type="date" id="legacy-date" class="w-full px-4 py-3 border-2 border-slate-100 rounded-2xl text-[10px] font-black focus:border-[#00918e] outline-none bg-white text-slate-800">
                     </div>
-                    <button onclick="submitLegacyPayment()" class="w-full py-4 bg-slate-800 text-white rounded-xl text-xs font-black uppercase shadow-xl shadow-slate-200 text-white">Save Record</button>
+                    <button onclick="submitLegacyPayment()" class="w-full py-4 bg-slate-800 text-white rounded-xl text-xs font-black uppercase shadow-xl shadow-slate-200 text-white text-white">Save Record</button>
                 </div>
             </div>
         </div>
@@ -335,7 +304,7 @@
         import { getAuth, onAuthStateChanged, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Production Firebase Config
+        // APP STATE & CONSTANTS
         const firebaseConfig = {
           apiKey: "AIzaSyBMKW2g9-ZAFpbTsB-O2krwQEo0MXqVLq8",
           authDomain: "dcsfund-78b75.firebaseapp.com",
@@ -345,19 +314,21 @@
           appId: "1:657283251331:web:4c0cda4d02cdaa8293efb6"
         };
         const EMAIL_PUBLIC_KEY = "pXz_F37e4Qy9xSByT", EMAIL_SERVICE_ID = "service_nymh52a", EMAIL_TEMPLATE_ID = "template_w5dv01g";
-        if (typeof emailjs !== 'undefined') emailjs.init(EMAIL_PUBLIC_KEY);
-
-        const finalConfig = (typeof window.__firebase_config !== 'undefined' && window.__firebase_config) ? JSON.parse(window.__firebase_config) : firebaseConfig;
-        let app, auth, db;
-        try { app = initializeApp(finalConfig); auth = getAuth(app); db = getFirestore(app); } catch (e) { console.error(e); }
-        
-        // DYNAMIC APP ID
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'dcs-fund-official';
         
-        let currentUser = null, isAdmin = false, members = [], payments = [], expenses = [], incomes = [], config = { years: [2026] }, activeRecord = null, activeMemberId = null, payMode = 'monthly';
+        let currentUser = null, isAdmin = false, members = [], payments = [], expenses = [], incomes = [], config = { years: [2026, 2027] }, activeRecord = null, activeMemberId = null, payMode = 'monthly';
         const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         const todayStr = new Date().toISOString().split('T')[0];
 
+        // INITIALIZE FIREBASE (GLOBAL SCOPE WITHIN MODULE)
+        const finalConfig = (typeof window.__firebase_config !== 'undefined' && window.__firebase_config) ? JSON.parse(window.__firebase_config) : firebaseConfig;
+        const app = initializeApp(finalConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        if (typeof emailjs !== 'undefined') emailjs.init(EMAIL_PUBLIC_KEY);
+
+        // GLOBAL HANDLERS (DEFINED IMMEDIATELY)
         window.switchLoginMode = (m) => {
             const isM = m === 'member';
             document.getElementById('member-login-form').classList.toggle('hidden', !isM);
@@ -365,30 +336,56 @@
             document.getElementById('toggle-member').className = isM ? 'flex-1 py-2.5 text-xs font-extrabold rounded-xl transition-all bg-white text-[#00918e] shadow-sm' : 'flex-1 py-2.5 text-xs font-extrabold rounded-xl transition-all text-slate-500';
             document.getElementById('toggle-admin').className = !isM ? 'flex-1 py-2.5 text-xs font-extrabold rounded-xl transition-all bg-[#00918e] text-white shadow-sm' : 'flex-1 py-2.5 text-xs font-extrabold rounded-xl transition-all text-slate-500';
         };
+
         window.memberLogin = () => {
             const sidInput = document.getElementById('staff-id');
             if(!sidInput) return;
             const sid = sidInput.value.trim();
             const m = members.find(x => x.staff_id === sid);
-            if (!m) return showToast("Staff ID not found. Contact Admin.", "error");
+            if (!m) return showToast("Staff ID not found.", "error");
             currentUser = m; isAdmin = false;
             document.getElementById('login-screen').classList.add('hidden');
             document.getElementById('member-dashboard').classList.remove('hidden');
             document.getElementById('member-name-display').innerText = m.staff_name;
             document.getElementById('staff-id-display').innerText = m.staff_id;
-            const payDateEl = document.getElementById('pay-date');
-            if(payDateEl) payDateEl.value = todayStr;
+            const pdEl = document.getElementById('pay-date'); if(pdEl) pdEl.value = todayStr;
+            populateDropdowns(); 
             updateDashboards();
         };
+
         window.adminLogin = () => {
             const pinInput = document.getElementById('admin-password');
             if (!pinInput || pinInput.value !== "6460") return showToast("Incorrect Code.", "error");
             isAdmin = true; currentUser = null;
             document.getElementById('login-screen').classList.add('hidden');
             document.getElementById('admin-dashboard').classList.remove('hidden');
+            populateDropdowns(); 
             updateDashboards();
         };
+
         window.logout = () => location.reload();
+
+        window.switchAdminTab = (t) => { 
+            ['approvals', 'finances', 'members', 'settings'].forEach(id => { 
+                const tab = document.getElementById(`tab-${id}`); 
+                if (tab) tab.classList.toggle('hidden', id !== t); 
+                const btn = document.getElementById(`btn-tab-${id}`); 
+                if(btn) btn.className = id === t ? "flex-1 py-4 text-[10px] font-black uppercase border-b-2 border-[#00918e] text-[#00918e] bg-white" : "flex-1 py-4 text-[10px] font-black uppercase border-b-2 border-transparent text-slate-400"; 
+            }); 
+        };
+
+        window.delRec = async (c, i) => { 
+            if(confirm("Permanently delete this record? This action cannot be undone.")) {
+                try {
+                    await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', c, i));
+                    showToast("Record deleted successfully.");
+                } catch (e) {
+                    console.error("Delete Error:", e);
+                    showToast("Failed to delete record.", "error");
+                }
+            }
+        };
+
         window.setPaymentMode = (m) => {
             payMode = m;
             document.getElementById('monthly-inputs').classList.toggle('hidden', m !== 'monthly');
@@ -396,9 +393,68 @@
             document.getElementById('mode-monthly').className = m === 'monthly' ? 'flex-1 py-1.5 text-[10px] font-bold rounded-md bg-white text-[#00918e] shadow-sm' : 'flex-1 py-1.5 text-[10px] font-bold rounded-md text-slate-500';
             document.getElementById('mode-bulk').className = m === 'bulk' ? 'flex-1 py-1.5 text-[10px] font-bold rounded-md bg-white text-[#00918e] shadow-sm' : 'flex-1 py-1.5 text-[10px] font-bold rounded-md text-slate-500';
         };
+
+        // UI HELPERS
+        function populateDropdowns() { 
+            const mS = document.getElementById('pay-month'), yS = document.getElementById('pay-year'), rS = document.getElementById('rpt-year-select'), sS = document.getElementById('rpt-staff-select'); 
+            if (mS) mS.innerHTML = MONTHS.map((m,i) => `<option value="${m}" ${i === new Date().getMonth() ? 'selected' : ''}>${m}</option>`).join(''); 
+            const activeYears = (config.years && config.years.length > 0) ? config.years : [2026, 2027];
+            const yrHTML = activeYears.map(y => `<option value="${y}">${y}</option>`).join(''); 
+            if (yS) yS.innerHTML = yrHTML; 
+            if (rS) rS.innerHTML = '<option value="all">Full History</option>' + yrHTML; 
+            if (sS && members.length > 0) sS.innerHTML = members.sort((a,b) => (a.staff_name || "").localeCompare(b.staff_name || "")).map(m => `<option value="${m.staff_id}">${m.staff_name}</option>`).join(''); 
+        }
+
+        async function generateOfficialReceiptData(p) {
+            const { jsPDF } = window.jspdf;
+            const pdfDocument = new jsPDF(); 
+            const recId = p.id || 'LEGACY-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            pdfDocument.setFillColor(0, 145, 142);
+            pdfDocument.rect(0, 0, 210, 40, 'F');
+            pdfDocument.setTextColor(255, 255, 255);
+            pdfDocument.setFontSize(22);
+            pdfDocument.setFont("helvetica", "bold");
+            pdfDocument.text("OFFICIAL RECEIPT", 105, 25, { align: "center" });
+            pdfDocument.setTextColor(50, 50, 50);
+            pdfDocument.setFontSize(10);
+            pdfDocument.setFont("helvetica", "normal");
+            pdfDocument.text(`Receipt No: ${recId}`, 15, 55);
+            pdfDocument.text(`Date Issued: ${new Date().toLocaleDateString('en-MY')}`, 15, 60);
+            pdfDocument.setFontSize(14);
+            pdfDocument.setFont("helvetica", "bold");
+            pdfDocument.text("DEPARTMENT OF COMPUTER SCIENCE (DCS)", 15, 75);
+            pdfDocument.setFontSize(10);
+            pdfDocument.setFont("helvetica", "normal");
+            pdfDocument.text("Kulliyyah of Information and Communication Technology (KICT)", 15, 80);
+            pdfDocument.text("International Islamic University Malaysia (IIUM)", 15, 85);
+            pdfDocument.autoTable({
+                startY: 95,
+                head: [['Description', 'Amount (RM)']],
+                body: [
+                    [`Fund Contribution for ${p.month || 'Bulk'} ${p.year || ''}`, (p.amount || 0).toFixed(2)],
+                    ['Staff Name:', p.staff_name || 'N/A'],
+                    ['Staff ID:', p.staff_id || 'N/A'],
+                    ['Payment Date:', p.payment_date || 'N/A']
+                ],
+                theme: 'striped',
+                headStyles: { fillColor: [0, 145, 142] }
+            });
+            const finalY = pdfDocument.lastAutoTable.finalY + 20;
+            pdfDocument.setFontSize(12);
+            pdfDocument.setFont("helvetica", "bold");
+            pdfDocument.text(`TOTAL PAID: RM ${(p.amount || 0).toFixed(2)}`, 15, finalY);
+            pdfDocument.setFontSize(8);
+            pdfDocument.setTextColor(150);
+            pdfDocument.text("This is a computer-generated receipt. No signature is required.", 105, 280, { align: "center" });
+            pdfDocument.text("© 2026 KICT DCS Fund System", 105, 285, { align: "center" });
+            pdfDocument.setTextColor(240, 240, 240);
+            pdfDocument.setFontSize(60);
+            pdfDocument.text("PAID", 105, 150, { align: "center", angle: 45 });
+            return pdfDocument.output('datauristring');
+        }
+
         window.submitPayment = async () => {
-            const amtEl = document.getElementById('pay-amount'), fileEl = document.getElementById('pay-receipt'), dateEl = document.getElementById('pay-date');
-            const amt = amtEl.value, file = fileEl.files[0], pDate = dateEl.value;
+            const amt = document.getElementById('pay-amount').value, file = document.getElementById('pay-receipt').files[0], pDate = document.getElementById('pay-date').value;
             if (!amt || !file || !pDate) return showToast("Fill all fields.", "error");
             const btn = document.getElementById('sub-btn'); btn.innerText = "Processing..."; btn.disabled = true;
             try {
@@ -413,76 +469,81 @@
                         member_name: currentUser.staff_name, staff_id: currentUser.staff_id, amount: amt, 
                         admin_link: window.location.href, target_email: "dcs_kict@iium.edu.my", 
                         subject: `[${currentUser.staff_name}] has submitted fund contribution payment` 
-                    }).catch(e => console.error("EmailJS error", e));
+                    }, EMAIL_PUBLIC_KEY).catch(e => console.error("EmailJS error", e));
                 }
                 showToast("Submitted successfully!");
-                fileEl.value = ""; document.getElementById('file-label').innerText = "Select Image or PDF File";
+                document.getElementById('pay-receipt').value = ""; document.getElementById('file-label').innerText = "Select Image or PDF File";
             } catch(e) { showToast("Upload failed.", "error"); }
             finally { btn.innerText = "Submit Record"; btn.disabled = false; }
         };
+
         const fileToBase64 = (f) => new Promise(res => { const r = new FileReader(); r.onload = e => res(e.target.result); r.readAsDataURL(f); });
+        
         window.registerMember = async () => {
             const idInput = document.getElementById('new-mem-id'), nameInput = document.getElementById('new-mem-name'), id = idInput.value.trim(), name = nameInput.value.trim();
             if(!id || !name) return showToast("ID and Name required.", "error");
             try { await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'members'), { staff_id: id, staff_name: name, created_at: new Date().toISOString() }); showToast("Registered."); idInput.value = ""; nameInput.value = ""; } catch(e) {}
         };
-        window.openLegacyModal = (mid) => {
-            const m = members.find(x => x.id === mid); activeMemberId = mid;
-            document.getElementById('legacy-staff-name').innerText = m.staff_name;
-            const lDate = document.getElementById('legacy-date'); if(lDate) lDate.value = todayStr;
-            document.getElementById('legacy-year').innerHTML = config.years.map(y => `<option value="${y}">${y}</option>`).join('');
-            document.getElementById('modal-overlay').classList.remove('hidden'); document.getElementById('legacy-modal').classList.remove('hidden');
+
+        window.updateStatus = async (s) => { 
+            if(!activeRecord) return; 
+            try { 
+                let updateData = { status: s };
+                if (s === 'approved') {
+                    showToast("Generating Receipt...");
+                    const officialReceipt = await generateOfficialReceiptData(activeRecord);
+                    updateData.official_receipt = officialReceipt;
+                }
+                await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'payments', activeRecord.id), updateData); 
+                showToast(`Record ${s}.`); 
+                closeModal(); 
+            } catch(e) { console.error(e); showToast("Action failed.", "error"); } 
         };
-        window.submitLegacyPayment = async () => {
-            const m = members.find(x => x.id === activeMemberId), year = document.getElementById('legacy-year').value, amount = document.getElementById('legacy-amount').value, lDate = document.getElementById('legacy-date').value;
-            if(!amount || !lDate) return;
-            try { await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'payments'), { staff_id: m.staff_id, staff_name: m.staff_name, month: 'Annual', year: year, amount: Number(amount), payment_date: lDate, notes: 'Historical record', status: 'approved', created_at: new Date().toISOString() }); showToast("Saved."); closeModal(); } catch(e) {}
-        };
-        window.closeModal = () => { ['preview-modal', 'report-preview-modal', 'legacy-modal', 'modal-overlay'].forEach(id => { const el = document.getElementById(id); if (el) el.classList.add('hidden'); }); document.getElementById('report-iframe').src = ""; document.getElementById('pv-pdf').src = ""; document.getElementById('pdf-blocked-msg').classList.add('hidden'); };
-        window.updateStatus = async (s) => { if(!activeRecord) return; try { await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'payments', activeRecord.id), { status: s }); showToast(`Record ${s}.`); closeModal(); } catch(e) {} };
+
         window.openVerificationModal = (id, type) => {
             let p; if(type === 'payment') p = payments.find(x => x.id === id); else if(type === 'income') p = incomes.find(x => x.id === id); else if(type === 'expense') p = expenses.find(x => x.id === id);
             activeRecord = p; document.getElementById('modal-title').innerText = (p.status === 'pending') ? 'Verify Record' : 'Record Details';
-            document.getElementById('pv-details').innerHTML = `<div><p class="uppercase text-[10px] text-slate-400">Details</p><p class="text-slate-800">${p.staff_name || p.title}</p></div><div><p class="uppercase text-[10px] text-slate-400">Amount</p><p class="text-[#00918e]">RM ${(p.amount||0).toFixed(2)}</p></div><div><p class="uppercase text-[10px] text-slate-400">Date</p><p class="text-slate-800">${p.payment_date}</p></div>`;
+            document.getElementById('pv-details').innerHTML = `<div><p class="uppercase text-[10px] text-slate-400">Details</p><p class="text-slate-800 text-xs font-bold">${p.staff_name || p.title}</p></div><div><p class="uppercase text-[10px] text-slate-400">Amount</p><p class="text-[#00918e] font-bold">RM ${(p.amount||0).toFixed(2)} (${p.status})</p></div><div><p class="uppercase text-[10px] text-slate-400">Date</p><p class="text-slate-800 font-bold">${p.payment_date}</p></div>`;
             const img = document.getElementById('pv-image'), pdf = document.getElementById('pv-pdf'), no = document.getElementById('pv-no-image');
             img.classList.add('hidden'); pdf.classList.add('hidden'); no.classList.add('hidden');
             if (p.receipt_data) { if (p.receipt_data.startsWith('data:application/pdf')) { pdf.src = p.receipt_data; pdf.classList.remove('hidden'); } else { img.src = p.receipt_data; img.classList.remove('hidden'); } } else no.classList.remove('hidden');
             document.getElementById('modal-footer').classList.toggle('hidden', p.status !== 'pending'); document.getElementById('modal-overlay').classList.remove('hidden'); document.getElementById('preview-modal').classList.remove('hidden');
         };
-        window.openReportPreview = (mode) => {
-            const { jsPDF } = window.jspdf; const pdf = new jsPDF();
-            let dateFrom, dateTo, yearFilter, staffFilter;
-            if (mode === 'staff') { dateFrom = document.getElementById('rpt-staff-date-from').value; dateTo = document.getElementById('rpt-staff-date-to').value; staffFilter = document.getElementById('rpt-staff-select').value; yearFilter = 'all'; } 
-            else { dateFrom = document.getElementById('rpt-annual-date-from').value; dateTo = document.getElementById('rpt-annual-date-to').value; yearFilter = document.getElementById('rpt-year-select').value; staffFilter = 'all'; }
-            const filterFn = (tx) => { const txDate = tx.payment_date, txYear = tx.year ? tx.year.toString() : new Date(txDate).getFullYear().toString(); if (dateFrom && txDate < dateFrom) return false; if (dateTo && txDate > dateTo) return false; if (yearFilter !== 'all' && txYear !== yearFilter && tx.year !== 'Custom' && tx.year !== 'Bulk') return false; if (yearFilter !== 'all' && (tx.year === 'Custom' || tx.year === 'Bulk')) { if (new Date(txDate).getFullYear().toString() !== yearFilter) return false; } if (staffFilter !== 'all' && tx.staff_id !== staffFilter) return false; return true; };
-            const approvedPayments = payments.filter(p => p.status === 'approved' && filterFn(p)), filteredIncomes = staffFilter === 'all' ? incomes.filter(filterFn) : [], filteredExpenses = staffFilter === 'all' ? expenses.filter(filterFn) : [];
-            const totalCredit = approvedPayments.reduce((a,c)=>a+(c.amount||0),0) + filteredIncomes.reduce((a,c)=>a+(c.amount||0),0), totalDebit = filteredExpenses.reduce((a,c)=>a+(c.amount||0),0), balance = totalCredit - totalDebit;
-            pdf.setFontSize(18); pdf.setTextColor(0, 145, 142); pdf.text(mode === 'staff' ? "INDIVIDUAL CONTRIBUTION STATEMENT" : "ANNUAL FINANCIAL REPORT", 14, 20);
-            pdf.setFontSize(9); pdf.setTextColor(100); pdf.text(`Generated: ${new Date().toLocaleString()}`, 14, 31);
-            pdf.setFontSize(11); pdf.setTextColor(0); if (mode === 'annual') { pdf.text(`Total Revenue: RM ${totalCredit.toFixed(2)}`, 14, 48); pdf.text(`Total Expenditure: RM ${totalDebit.toFixed(2)}`, 14, 54); pdf.text(`CURRENT BALANCE: RM ${balance.toFixed(2)}`, 14, 62); } 
-            else { pdf.text(`TOTAL STAFF CONTRIBUTION: RM ${totalCredit.toFixed(2)}`, 14, 48); }
-            const creditData = [...filteredIncomes.map(x=>[x.payment_date, x.title, `RM ${(x.amount||0).toFixed(2)}`]), ...approvedPayments.map(x=>[x.payment_date, `${x.staff_name} (${x.month} ${x.year})`, `RM ${(x.amount||0).toFixed(2)}`])].sort((a,b)=>new Date(b[0])-new Date(a[0]));
-            pdf.autoTable({ startY: mode === 'annual' ? 78 : 58, head: [['Date', 'Description', 'Amount']], body: creditData, headStyles: { fillColor: [0, 145, 142] } });
-            const blobURL = URL.createObjectURL(pdf.output('blob')); document.getElementById('report-iframe').src = blobURL; document.getElementById('download-report-btn').onclick = () => pdf.save(`DCS_Report_${todayStr}.pdf`);
-            document.getElementById('modal-overlay').classList.remove('hidden'); document.getElementById('report-preview-modal').classList.remove('hidden');
+
+        window.closeModal = () => { ['preview-modal', 'report-preview-modal', 'legacy-modal', 'modal-overlay'].forEach(id => { const el = document.getElementById(id); if (el) el.classList.add('hidden'); }); document.getElementById('report-iframe').src = ""; document.getElementById('pv-pdf').src = ""; };
+
+        window.viewOfficialReceipt = (data) => {
+            const iframe = document.getElementById('report-iframe');
+            if (iframe) iframe.src = data;
+            const dlBtn = document.getElementById('download-report-btn');
+            if (dlBtn) {
+                dlBtn.onclick = () => {
+                    const link = document.createElement('a');
+                    link.href = data;
+                    link.download = `DCS_Receipt_${Date.now()}.pdf`;
+                    link.click();
+                };
+            }
+            document.getElementById('modal-overlay').classList.remove('hidden');
+            document.getElementById('report-preview-modal').classList.remove('hidden');
         };
-        window.importMembersFromCSV = async (input) => {
-            const file = input.files[0]; if (!file) return;
-            const reader = new FileReader(); reader.onload = async (e) => { const rows = e.target.result.split('\n').map(r => r.split(',')); let count = 0; for (const row of rows.slice(1)) { if (row.length < 2) continue; const id = row[0].trim(), name = row[1].trim(); if (!id || !name || members.some(m => m.staff_id === id)) continue; try { await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'members'), { staff_id: id, staff_name: name, created_at: new Date().toISOString() }); count++; } catch (err) {} } showToast(`Imported ${count} members.`); input.value = ""; }; reader.readAsText(file);
-        };
-        window.switchAdminTab = (t) => { ['approvals', 'finances', 'members', 'settings'].forEach(id => { const tab = document.getElementById(`tab-${id}`); if (tab) tab.classList.toggle('hidden', id !== t); const btn = document.getElementById(`btn-tab-${id}`); if(btn) btn.className = id === t ? "flex-1 py-4 text-[10px] font-black uppercase border-b-2 border-[#00918e] text-[#00918e] bg-white" : "flex-1 py-4 text-[10px] font-black uppercase border-b-2 border-transparent text-slate-400"; }); };
+
         window.addExpense = async () => {
-            const tEl = document.getElementById('exp-title'), aEl = document.getElementById('exp-amount'), dEl = document.getElementById('exp-date'), fEl = document.getElementById('exp-receipt'), t = tEl.value, a = aEl.value, d = dEl.value, f = fEl.files[0];
+            const tEl = document.getElementById('exp-title'), aEl = document.getElementById('exp-amount'), dEl = document.getElementById('exp-date');
+            const t = tEl.value, a = aEl.value, d = dEl.value;
             if(!t || !a || !d) return showToast("Fields required", "error");
             const btn = document.getElementById('exp-btn'); btn.innerText = "Saving..."; btn.disabled = true;
-            try { let data = null; if(f) data = (f.type === "application/pdf") ? await fileToBase64(f) : await compressImage(f); await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'expenses'), { title: t, amount: Number(a), payment_date: d, type: 'expense', receipt_data: data, created_at: new Date().toISOString() }); showToast("Logged Successfully."); tEl.value = ""; aEl.value = ""; fEl.value = ""; } catch(e) {} finally { btn.innerText = "Save Expense"; btn.disabled = false; }
+            try { await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'expenses'), { title: t, amount: Number(a), payment_date: d, type: 'expense', created_at: new Date().toISOString() }); showToast("Logged."); tEl.value = ""; aEl.value = ""; } catch(e) {} finally { btn.innerText = "Save Expense"; btn.disabled = false; }
         };
+
         window.addIncome = async () => {
-            const tEl = document.getElementById('inc-title'), aEl = document.getElementById('inc-amount'), dEl = document.getElementById('inc-date'), fEl = document.getElementById('inc-receipt'), t = tEl.value, a = aEl.value, d = dEl.value, f = fEl.files[0];
+            const tEl = document.getElementById('inc-title'), aEl = document.getElementById('inc-amount'), dEl = document.getElementById('inc-date');
+            const t = tEl.value, a = aEl.value, d = dEl.value;
             if(!t || !a || !d) return showToast("Fields required", "error");
             const btn = document.getElementById('inc-btn'); btn.innerText = "Saving..."; btn.disabled = true;
-            try { let data = null; if(f) data = (f.type === "application/pdf") ? await fileToBase64(f) : await compressImage(f); await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'incomes'), { title: t, amount: Number(a), payment_date: d, type: 'income', receipt_data: data, created_at: new Date().toISOString() }); showToast("Logged Successfully."); tEl.value = ""; aEl.value = ""; fEl.value = ""; } catch(e) {} finally { btn.innerText = "Save Income"; btn.disabled = false; }
+            try { await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'incomes'), { title: t, amount: Number(a), payment_date: d, type: 'income', created_at: new Date().toISOString() }); showToast("Logged."); tEl.value = ""; aEl.value = ""; } catch(e) {} finally { btn.innerText = "Save Income"; btn.disabled = false; }
         };
+
         window.addYear = async () => { 
             const yEl = document.getElementById('new-year');
             const y = Number(yEl.value); 
@@ -491,27 +552,137 @@
             await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'config'), { years: updatedYears });
             yEl.value = ""; 
         };
+
+        window.removeYear = async (y) => { if(confirm("Confirm removal?")) await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'config'), { years: config.years.filter(x => x !== y) }); };
         window.updateFileName = (i) => { const el = document.getElementById('file-label'); if(el) el.innerText = i.files[0]?.name || "Select Image or PDF File"; };
         window.exportToCSV = (type) => { let csv = "data:text/csv;charset=utf-8,ID,Name,Total Paid\n"; members.forEach(m => { const total = payments.filter(p => p.staff_id === m.staff_id && p.status === 'approved').reduce((a, c) => a + (c.amount||0), 0); csv += `${m.staff_id},${m.staff_name},${total}\n`; }); const link = document.createElement("a"); link.setAttribute("href", encodeURI(csv)); link.setAttribute("download", "dcs_members_list.csv"); document.body.appendChild(link); link.click(); document.body.removeChild(link); };
-        window.onload = async () => { try { if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) await signInWithCustomToken(auth, __initial_auth_token); else await signInAnonymously(auth); onAuthStateChanged(auth, u => { if(u) { const s = document.getElementById('db-status'); if(s) { s.className = "mt-6 inline-flex items-center px-4 py-1.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-600 border border-emerald-200"; s.innerHTML = 'DATABASE CONNECTED'; } initRealtime(); } }); } catch(e) {} };
-        
+
+        window.openLegacyModal = (mid) => {
+            const m = members.find(x => x.id === mid); activeMemberId = mid;
+            document.getElementById('legacy-staff-name').innerText = m.staff_name;
+            const lDate = document.getElementById('legacy-date'); if(lDate) lDate.value = todayStr;
+            document.getElementById('legacy-year').innerHTML = config.years.map(y => `<option value="${y}">${y}</option>`).join('');
+            document.getElementById('modal-overlay').classList.remove('hidden'); document.getElementById('legacy-modal').classList.remove('hidden');
+        };
+
+        window.submitLegacyPayment = async () => {
+            const m = members.find(x => x.id === activeMemberId), year = document.getElementById('legacy-year').value, amount = document.getElementById('legacy-amount').value, lDate = document.getElementById('legacy-date').value;
+            if(!amount || !lDate) return;
+            try { 
+                const pData = { staff_id: m.staff_id, staff_name: m.staff_name, month: 'Annual', year: year, amount: Number(amount), payment_date: lDate, notes: 'Historical record', status: 'approved', created_at: new Date().toISOString() };
+                const officialReceipt = await generateOfficialReceiptData(pData);
+                pData.official_receipt = officialReceipt;
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'payments'), pData); 
+                showToast("Saved with Receipt."); 
+                closeModal(); 
+            } catch(e) { console.error(e); }
+        };
+
+        // REALTIME & DASHBOARDS
+        function updateDashboards() { if(isAdmin) renderAdmin(); else if(currentUser) renderMember(); }
+
+        function renderMember() { 
+            const my = payments.filter(p => p.staff_id === currentUser.staff_id), approved = my.filter(p => p.status === 'approved'), cY = new Date().getFullYear().toString(), yrPaid = approved.filter(p => p.year === cY || (p.year === 'Custom' && p.payment_date.startsWith(cY))).reduce((a,c)=>a+(c.amount||0), 0); 
+            document.getElementById('mem-total-approved').innerText = approved.reduce((a,c)=>a+(c.amount||0),0).toFixed(2);
+            document.getElementById('mem-total-pending').innerText = my.filter(p => p.status === 'pending').reduce((a,c)=>a+(c.amount||0),0).toFixed(2);
+            document.getElementById('mem-year-paid').innerText = yrPaid.toFixed(2);
+            
+            const latestApproved = approved.sort((a,b) => new Date(b.payment_date) - new Date(a.payment_date))[0];
+            const banner = document.getElementById('latest-receipt-banner');
+            if (latestApproved && latestApproved.official_receipt) {
+                banner.classList.remove('hidden');
+                document.getElementById('latest-receipt-btn').onclick = () => window.viewOfficialReceipt(latestApproved.official_receipt);
+            } else { banner.classList.add('hidden'); }
+
+            document.getElementById('mem-history-body').innerHTML = my.sort((a,b)=>new Date(b.payment_date)-new Date(a.payment_date)).map(p=>{
+                const hasReceipt = p.official_receipt;
+                return `<tr>
+                    <td class="py-3 px-2 font-black text-xs">${p.payment_date}</td>
+                    <td class="py-3 px-2 font-bold text-slate-700 text-xs">${p.month === 'Bulk' ? (p.notes || "Bulk") : p.month + ' ' + p.year}</td>
+                    <td class="py-3 px-2 font-black text-xs">RM ${(p.amount||0).toFixed(2)}</td>
+                    <td class="py-3 px-2 text-right">
+                        <div class="flex flex-col items-end gap-1">
+                            <span class="px-2 py-0.5 rounded text-[8px] font-black uppercase ${p.status==='approved'?'bg-emerald-100 text-emerald-700':p.status==='rejected'?'bg-rose-100 text-rose-700':'bg-amber-100 text-amber-700'}">${p.status}</span>
+                            ${hasReceipt ? `<button onclick="viewOfficialReceipt('${p.official_receipt}')" class="text-[10px] font-black text-[#00918e] hover:underline flex items-center gap-1">📄 View Official Receipt</button>` : ''}
+                        </div>
+                    </td>
+                </tr>`;
+            }).join('');
+        }
+
+        function renderAdmin() { 
+            const appRecs = payments.filter(p => p.status === 'approved'), pend = payments.filter(p => p.status === 'pending'), sP = appRecs.reduce((a,c) => a + (c.amount||0), 0), sI = incomes.reduce((a,c) => a + (c.amount||0), 0), sE = expenses.reduce((a,c) => a + (c.amount||0), 0); 
+            document.getElementById('adm-stat-approved').innerText = (sP + sI).toFixed(2);
+            document.getElementById('adm-stat-total').innerText = ((sP + sI) - sE).toFixed(2);
+            document.getElementById('adm-stat-pending').innerText = pend.reduce((a,c) => a + (c.amount||0), 0).toFixed(2);
+            document.getElementById('adm-stat-expenses').innerText = sE.toFixed(2);
+            document.getElementById('pending-grid').innerHTML = pend.map(p => `<div class="bg-white border p-5 rounded-[1.5rem] cursor-pointer hover:border-[#00918e] shadow-sm hover:shadow-lg transition-all" onclick="openVerificationModal('${p.id}', 'payment')"><p class="text-xs font-black text-slate-800">${p.staff_name}</p><p class="text-[10px] text-slate-400 font-bold mt-1 uppercase tracking-tighter">${p.month} ${p.year} • RM ${(p.amount||0).toFixed(2)}</p><div class="mt-4 w-full py-2 bg-slate-50 text-slate-400 text-[9px] font-black tracking-widest text-center rounded-xl uppercase">Verify Record</div></div>`).join('');
+            document.getElementById('no-pending-msg').classList.toggle('hidden', pend.length > 0);
+            
+            const txs = [
+                ...expenses.map(x => ({...x, t:'DEBIT', s:'bg-rose-50 text-rose-700', type:'expense'})),
+                ...incomes.map(x => ({...x, t:'CREDIT', s:'bg-blue-50 text-blue-700', type:'income'})),
+                ...payments.map(x => ({...x, t:'FUND', s: x.status === 'approved' ? 'bg-emerald-50 text-emerald-700' : (x.status === 'rejected' ? 'bg-rose-50 text-rose-700' : 'bg-amber-50 text-amber-700'), type:'payment'}))
+            ].sort((a,b) => new Date(b.payment_date) - new Date(a.payment_date));
+            
+            document.getElementById('adm-finance-body').innerHTML = txs.map(x => `<tr>
+                <td class="py-4 px-2"><span class="px-2 py-0.5 rounded font-black ${x.s}">${x.t}</span></td>
+                <td class="py-4 px-2 font-black text-slate-800 text-xs text-slate-800">${x.title || `${x.staff_name} (${x.month})`}</td>
+                <td class="py-4 px-2 font-black text-slate-800 text-xs">RM ${(x.amount||0).toFixed(2)}</td>
+                <td class="py-4 px-2 text-center text-slate-800">${x.receipt_data?`<button onclick="openVerificationModal('${x.id}', '${x.type}')" class="px-3 py-1 bg-white border border-slate-100 text-[#00918e] rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-slate-50">🖼️ View</button>`:'-'}</td>
+                <td class="py-4 px-2 text-right text-slate-400 font-bold text-xs">${x.payment_date}</td>
+                <td class="py-4 px-2 text-right">
+                    <button onclick="delRec('${x.type === 'expense' ? 'expenses' : x.type === 'income' ? 'incomes' : 'payments'}', '${x.id}')" class="p-2 text-slate-300 hover:text-rose-600 transition-colors" title="Delete Record">🗑️</button>
+                </td>
+            </tr>`).join('');
+            renderDirectory();
+        }
+
+        function renderDirectory() { 
+            const body = document.getElementById('adm-member-body'); if(!body) return; 
+            const cY = new Date().getFullYear().toString();
+            body.innerHTML = members.map(m => {
+                const pd = payments.filter(p => p.staff_id === m.staff_id && p.status === 'approved' && (p.year === cY || (p.month === 'Annual' && p.year === cY))).reduce((a,c) => a + (c.amount||0), 0);
+                return `<tr><td class="py-4 px-2 text-xs font-bold text-slate-400 tracking-tighter">${m.staff_id}</td><td class="py-4 px-2 text-xs font-black text-slate-800">${m.staff_name}</td><td class="py-4 px-2 text-center font-black text-emerald-600 text-xs">RM ${pd.toFixed(2)}</td><td class="py-4 px-2 text-right flex gap-1 justify-end"><button onclick="openLegacyModal('${m.id}')" class="p-2 bg-slate-50 text-slate-400 rounded-lg hover:text-[#00918e] transition-all">📜</button><button onclick="delRec('members', '${m.id}')" class="p-2 text-slate-300 hover:text-rose-600 transition-colors">🗑️</button></td></tr>`; 
+            }).join(''); 
+        }
+
+        function renderYears() {
+            const list = document.getElementById('years-list'); if(!list) return;
+            list.innerHTML = (config.years || []).map(y => `<div class="px-4 py-1.5 bg-white border border-slate-200 rounded-xl flex items-center gap-3 font-black text-[10px] shadow-sm text-slate-600">${y} <button onclick="removeYear(${y})" class="text-rose-300 hover:text-rose-500 transition-colors">✕</button></div>`).join('');
+        }
+
+        function showToast(m, t = "success") { const el = document.getElementById('toast'), msg = document.getElementById('toast-msg'); if(!el || !msg) return; msg.innerText = m; el.className = `fixed bottom-8 right-8 px-8 py-5 rounded-3xl ${t === 'error' ? 'bg-rose-600' : 'bg-slate-900'} text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl z-[200] transform translate-y-0 opacity-100 transition-all duration-300`; setTimeout(() => { if (el) { el.style.transform = "translateY(24px)"; el.style.opacity = "0"; } }, 3000); }
+
+        async function compressImage(f) { return new Promise(res => { const i = new Image(), r = new FileReader(); r.onload = e => i.src = e.target.result; i.onload = () => { const c = document.createElement('canvas'); let w = i.width, h = i.height, m = 800; if(w > h) { if(w > m) { h *= m/w; w = m; } } else { if(h > m) { w *= m/h; h = m; } } c.width = w; c.height = h; c.getContext('2d').drawImage(i, 0, 0, w, h); res(c.toDataURL('image/jpeg', 0.5)); }; r.readAsDataURL(f); }); }
+
         function initRealtime() {
             if (!auth.currentUser) return;
-            const onError = (e) => console.error("Firestore error", e);
+            const onError = (e) => {
+                console.error("Firestore error", e);
+                if (e.code === 'permission-denied') showToast("Database error: Access denied.", "error");
+            };
             onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'members'), s => { members = s.docs.map(d => ({id: d.id, ...d.data()})); renderDirectory(); populateDropdowns(); }, onError);
             onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'payments'), s => { payments = s.docs.map(d => ({id: d.id, ...d.data()})); updateDashboards(); }, onError);
             onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'expenses'), s => { expenses = s.docs.map(d => ({id: d.id, ...d.data()})); updateDashboards(); }, onError);
             onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'incomes'), s => { incomes = s.docs.map(d => ({id: d.id, ...d.data()})); updateDashboards(); }, onError);
             onSnapshot(doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'config'), d => { if(d.exists()) { config = d.data(); populateDropdowns(); renderYears(); } }, onError);
         }
-        async function compressImage(f) { return new Promise(res => { const i = new Image(), r = new FileReader(); r.onload = e => i.src = e.target.result; i.onload = () => { const c = document.createElement('canvas'); let w = i.width, h = i.height, m = 800; if(w > h) { if(w > m) { h *= m/w; w = m; } } else { if(h > m) { w *= m/h; h = m; } } c.width = w; c.height = h; c.getContext('2d').drawImage(i, 0, 0, w, h); res(c.toDataURL('image/jpeg', 0.5)); }; r.readAsDataURL(f); }); }
-        function updateDashboards() { if(isAdmin) renderAdmin(); else if(currentUser) renderMember(); }
-        function renderMember() { const my = payments.filter(p => p.staff_id === currentUser.staff_id), approved = my.filter(p => p.status === 'approved'), cY = new Date().getFullYear().toString(), yrPaid = approved.filter(p => p.year === cY || (p.year === 'Custom' && p.payment_date.startsWith(cY))).reduce((a,c)=>a+(c.amount||0), 0); document.getElementById('mem-total-approved').innerText = approved.reduce((a,c)=>a+(c.amount||0),0).toFixed(2); document.getElementById('mem-total-pending').innerText = my.filter(p => p.status === 'pending').reduce((a,c)=>a+(c.amount||0),0).toFixed(2); document.getElementById('mem-year-paid').innerText = yrPaid.toFixed(2); document.getElementById('mem-history-body').innerHTML = my.sort((a,b)=>new Date(b.payment_date)-new Date(a.payment_date)).map(p=>`<tr><td class="py-3 px-2 font-black">${p.payment_date}</td><td class="py-3 px-2 font-bold text-slate-700">${p.month === 'Bulk' ? p.notes : p.month + ' ' + p.year}</td><td class="py-3 px-2 font-black">RM ${(p.amount||0).toFixed(2)}</td><td class="py-3 px-2 text-right"><span class="px-2 py-0.5 rounded text-[8px] font-black uppercase ${p.status==='approved'?'bg-emerald-100 text-emerald-700':p.status==='rejected'?'bg-rose-100 text-rose-700':'bg-amber-100 text-amber-700'}">${p.status}</span></td></tr>`).join(''); }
-        function renderAdmin() { const appRecs = payments.filter(p => p.status === 'approved'), pend = payments.filter(p => p.status === 'pending'), sP = appRecs.reduce((a,c) => a + (c.amount||0), 0), sI = incomes.reduce((a,c) => a + (c.amount||0), 0), sE = expenses.reduce((a,c) => a + (c.amount||0), 0); document.getElementById('adm-stat-approved').innerText = (sP + sI).toFixed(2); document.getElementById('adm-stat-total').innerText = ((sP + sI) - sE).toFixed(2); document.getElementById('adm-stat-pending').innerText = pend.reduce((a,c) => a + (c.amount||0), 0).toFixed(2); document.getElementById('adm-stat-expenses').innerText = sE.toFixed(2); document.getElementById('pending-grid').innerHTML = pend.map(p => `<div class="bg-white border p-5 rounded-[1.5rem] cursor-pointer hover:border-[#00918e] shadow-sm hover:shadow-lg transition-all" onclick="openVerificationModal('${p.id}', 'payment')"><p class="text-xs font-black text-slate-800">${p.staff_name}</p><p class="text-[10px] text-slate-400 font-bold mt-1 uppercase">${p.month} ${p.year} • RM ${(p.amount||0).toFixed(2)}</p><div class="mt-4 w-full py-2 bg-slate-50 text-slate-400 text-[9px] font-black tracking-widest text-center rounded-xl uppercase">Verify Record</div></div>`).join(''); document.getElementById('no-pending-msg').classList.toggle('hidden', pend.length > 0); const txs = [...expenses.map(x => ({...x, t:'DEBIT', c:'text-rose-600', s:'bg-rose-50 text-rose-700', type:'expense'})), ...incomes.map(x => ({...x, t:'CREDIT', c:'text-blue-600', s:'bg-blue-50 text-blue-700', type:'income'})), ...appRecs.map(x => ({...x, t:'CREDIT', c:'text-emerald-600', s:'bg-emerald-50 text-emerald-700', type:'payment'}))].sort((a,b) => new Date(b.payment_date) - new Date(a.payment_date)); document.getElementById('adm-finance-body').innerHTML = txs.map(x => `<tr><td class="py-4 px-2"><span class="px-2 py-0.5 rounded font-black ${x.s}">${x.t}</span></td><td class="py-4 px-2 font-black text-slate-800 text-xs">${x.title || `${x.staff_name} (${x.month})`}</td><td class="py-4 px-2 font-black text-slate-800 text-xs">RM ${(x.amount||0).toFixed(2)}</td><td class="py-4 px-2 text-center text-slate-800">${x.receipt_data?`<button onclick="openVerificationModal('${x.id}', '${x.type}')" class="px-3 py-1 bg-white border border-slate-100 text-[#00918e] rounded-lg text-[10px] font-black uppercase hover:bg-slate-50">🖼️ View</button>`:'-'}</td><td class="py-4 px-2 text-right text-slate-400 font-bold text-xs">${x.payment_date}</td><td class="py-4 px-2 text-right"><button onclick="delRec('${x.type === 'expense' ? 'expenses' : x.type === 'income' ? 'incomes' : 'payments'}', '${x.id}')" class="text-slate-200 hover:text-rose-500 transition-colors">🗑️</button></td></tr>`).join(''); renderDirectory(); }
-        function renderDirectory() { const body = document.getElementById('adm-member-body'); if(!body) return; const cY = new Date().getFullYear().toString(); body.innerHTML = members.map(m => { const pd = payments.filter(p => p.staff_id === m.staff_id && p.status === 'approved' && (p.year === cY || (p.month === 'Annual' && p.year === cY))).reduce((a,c) => a + (c.amount||0), 0); return `<tr><td class="py-4 px-2 text-xs font-bold text-slate-400 tracking-tighter">${m.staff_id}</td><td class="py-4 px-2 text-xs font-black text-slate-800">${m.staff_name}</td><td class="py-4 px-2 text-center font-black text-emerald-600">RM ${pd.toFixed(2)}</td><td class="py-4 px-2 text-right flex gap-1 justify-end"><button onclick="openLegacyModal('${m.id}')" class="p-2 bg-slate-50 text-slate-400 rounded-lg hover:text-[#00918e] transition-all">📜</button><button onclick="delRec('members', '${m.id}')" class="p-2 text-slate-200 hover:text-rose-500 transition-colors">🗑️</button></td></tr>`; }).join(''); }
-        function renderYears() { const list = document.getElementById('years-list'); if(!list) return; list.innerHTML = (config.years || []).map(y => `<div class="px-4 py-1.5 bg-white border border-slate-200 rounded-xl flex items-center gap-3 font-black text-[10px] shadow-sm text-slate-600">${y} <button onclick="removeYear(${y})" class="text-rose-300 hover:text-rose-500 transition-colors">✕</button></div>`).join(''); }
-        function populateDropdowns() { const mS = document.getElementById('pay-month'), yS = document.getElementById('pay-year'), rS = document.getElementById('rpt-year-select'), sS = document.getElementById('rpt-staff-select'); if(!mS || !yS || !rS || !sS) return; mS.innerHTML = MONTHS.map((m,i) => `<option value="${m}" ${i === new Date().getMonth() ? 'selected' : ''}>${m}</option>`).join(''); const yrHTML = (config.years || []).map(y => `<option value="${y}">${y}</option>`).join(''); yS.innerHTML = yrHTML; rS.innerHTML = '<option value="all">Full History</option>' + yrHTML; sS.innerHTML = members.sort((a,b) => a.staff_name.localeCompare(b.staff_name)).map(m => `<option value="${m.staff_id}">${m.staff_name}</option>`).join(''); }
-        function showToast(m, t = "success") { const el = document.getElementById('toast'), msg = document.getElementById('toast-msg'); if(!el || !msg) return; msg.innerText = m; el.className = `fixed bottom-8 right-8 px-8 py-5 rounded-3xl ${t === 'error' ? 'bg-rose-600' : 'bg-slate-900'} text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl z-[200] transform translate-y-0 opacity-100 transition-all duration-300`; setTimeout(() => { el.style.transform = "translateY(24px)"; el.style.opacity = "0"; }, 3000); }
+
+        window.onload = async () => { 
+            populateDropdowns(); 
+            try { 
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) await signInWithCustomToken(auth, __initial_auth_token); 
+                else await signInAnonymously(auth); 
+                onAuthStateChanged(auth, u => { 
+                    if(u) { 
+                        const s = document.getElementById('db-status'); 
+                        if(s) { s.className = "mt-6 inline-flex items-center px-4 py-1.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-600 border border-emerald-200 text-emerald-600"; s.innerHTML = 'DATABASE CONNECTED'; } 
+                        initRealtime(); 
+                    } 
+                }); 
+            } catch(e) { console.error("Auth init error", e); } 
+        };
     </script>
 </body>
 </html>
